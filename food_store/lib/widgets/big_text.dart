@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class BitText extends StatelessWidget {
+class BigText extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color color;
   TextOverflow textOverflow;
 
-  BitText(
+  BigText(
       {Key? key,
       required this.text,
       this.fontSize = 20,
@@ -18,6 +18,7 @@ class BitText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
       overflow: textOverflow,
       style: TextStyle(
         fontFamily: "Roboto",
