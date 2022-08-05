@@ -45,7 +45,9 @@ class MainFoodPage extends StatelessWidget {
               ),
             ),
           ),
-          FoodPageBody(),
+          Expanded(child: SingleChildScrollView(
+            child: FoodPageBody(),
+          ),),
         ],
       ),
     );
