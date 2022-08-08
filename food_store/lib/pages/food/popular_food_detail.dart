@@ -3,6 +3,7 @@ import 'package:food_store/utils/colors.dart';
 import 'package:food_store/utils/dimensions.dart';
 import 'package:food_store/widgets/app_icon.dart';
 import 'package:food_store/widgets/big_text.dart';
+import 'package:food_store/widgets/expandable_text_widget.dart';
 import 'package:food_store/widgets/info_column.dart';
 
 class PopularFoodDetail extends StatelessWidget {
@@ -67,6 +68,12 @@ class PopularFoodDetail extends StatelessWidget {
                   InfoColumn(text: "Chinese Side"),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: "Introduce"),
+                  SizedBox(height: Dimensions.height20),
+                  Expanded(
+                      child: SingleChildScrollView(
+                          child: ExpandableTextWidget(
+                              text:
+                                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus."))),
                 ],
               ),
             ),
@@ -78,15 +85,19 @@ class PopularFoodDetail extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.buttonBackgroundColor,
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(Dimensions.radius20*2),
-            topLeft: Radius.circular(Dimensions.radius20*2),
+            topRight: Radius.circular(Dimensions.radius20 * 2),
+            topLeft: Radius.circular(Dimensions.radius20 * 2),
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              padding: EdgeInsets.only(top: Dimensions.height20, bottom: Dimensions.height20, left: Dimensions.width20, right: Dimensions.width20),
+              padding: EdgeInsets.only(
+                  top: Dimensions.height20,
+                  bottom: Dimensions.height20,
+                  left: Dimensions.width20,
+                  right: Dimensions.width20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -102,7 +113,11 @@ class PopularFoodDetail extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: Dimensions.height20, bottom: Dimensions.height20, left: Dimensions.width20, right: Dimensions.width20),
+              padding: EdgeInsets.only(
+                  top: Dimensions.height20,
+                  bottom: Dimensions.height20,
+                  left: Dimensions.width20,
+                  right: Dimensions.width20),
               decoration: BoxDecoration(
                 color: AppColors.mainColor,
                 borderRadius: BorderRadius.circular(Dimensions.radius20),

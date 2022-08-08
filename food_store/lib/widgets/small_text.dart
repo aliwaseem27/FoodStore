@@ -18,11 +18,13 @@ class SmallText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: TextAlign.justify,
       style: TextStyle(
-          fontFamily: "Roboto",
-          color: color,
-          fontSize: fontSize,
-          height: height),
+        fontFamily: "Roboto",
+        color: color,
+        fontSize: fontSize,
+        height: height,
+      ),
     );
   }
 }
