@@ -3,8 +3,8 @@ import 'package:food_store/utils/colors.dart';
 import 'package:food_store/widgets/app_icon.dart';
 import 'package:food_store/widgets/big_text.dart';
 
-import '../../utils/dimensions.dart';
-import '../../widgets/expandable_text_widget.dart';
+import 'package:food_store/utils/dimensions.dart';
+import 'package:food_store/widgets/expandable_text_widget.dart';
 
 class RecommendedFoodDetail extends StatefulWidget {
   const RecommendedFoodDetail({Key? key}) : super(key: key);
