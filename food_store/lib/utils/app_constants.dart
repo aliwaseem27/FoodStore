@@ -5,6 +5,7 @@ class AppConstants {
   static const String kBaseURI = "http://mvs.bslmeiyu.com";
   static const String kPopularProductURI = "/api/v1/products/popular";
   static const String kRecommendedProductURI = "/api/v1/products/recommended";
+  static const String kUploadsURL = "/uploads/";
 
   static const String kToken = "DBtoken";
 }

@@ -5,6 +5,7 @@ class SmallText extends StatelessWidget {
   final double fontSize;
   final Color color;
   final double height;
+  int? maxLines;
 
   SmallText({
     Key? key,
@@ -12,6 +13,7 @@ class SmallText extends StatelessWidget {
     this.fontSize = 12,
     this.height = 1.2,
     this.color = const Color(0xFFccc7c5),
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class SmallText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.justify,
+      maxLines: maxLines,
       style: TextStyle(
         fontFamily: "Roboto",
         color: color,

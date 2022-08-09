@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:food_store/controllers/popular_product_controller.dart';
 import 'package:food_store/pages/food/popular_food_detail.dart';
