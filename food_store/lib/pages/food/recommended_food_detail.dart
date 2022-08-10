@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/controllers/recommended_product_controller.dart';
+import 'package:food_store/utils/app_constants.dart';
 import 'package:food_store/utils/colors.dart';
 import 'package:food_store/widgets/app_icon.dart';
 import 'package:food_store/widgets/big_text.dart';
 
 import 'package:food_store/utils/dimensions.dart';
 import 'package:food_store/widgets/expandable_text_widget.dart';
+import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatefulWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   State<RecommendedFoodDetail> createState() => _RecommendedFoodDetailState();
@@ -16,15 +22,21 @@ class RecommendedFoodDetail extends StatefulWidget {
 class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>()
+        .recommendedProductList[widget.pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap:(){Get.back();},
+                  child: AppIcon(icon: Icons.clear),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -42,7 +54,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                 ),
                 child: Center(
                   child: BigText(
-                    text: "Chinese Side",
+                    text: product.name!,
                     fontSize: Dimensions.font26,
                   ),
                 ),
@@ -52,8 +64,8 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/food0.png",
+              background: Image.network(
+                AppConstants.kBaseURI+AppConstants.kUploadsURL+product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -65,7 +77,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                   left: Dimensions.width20, right: Dimensions.width20),
               child: ExpandableTextWidget(
                   text:
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec diam sapien, sodales et risus ut, consequat pulvinar ipsum. Suspendisse sagittis arcu augue, sed bibendum arcu mattis vel. Morbi congue sit amet lacus vel tincidunt. Integer at molestie magna. Duis massa ex, elementum vitae mauris vitae, placerat consectetur orci. Donec vel velit vitae nulla gravida congue non non neque. Praesent a cursus orci. Donec porta tellus a mauris semper, a maximus urna dapibus."),
+                      product.description!),
             ),
           ),
         ],
@@ -90,7 +102,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                   backgroundColor: AppColors.mainColor,
                 ),
                 BigText(
-                  text: "   \$12.88 X 0   ",
+                  text: "   \$${product.price!} X 0   ",
                   color: AppColors.mainBlackColor,
                   fontSize: Dimensions.font26,
                 ),
@@ -125,7 +137,10 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                   ),
-                  child: Icon(Icons.favorite, color: AppColors.mainColor,),
+                  child: Icon(
+                    Icons.favorite,
+                    color: AppColors.mainColor,
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
