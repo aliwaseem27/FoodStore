@@ -49,16 +49,20 @@ class PopularProductController extends GetxController {
         "Quantity can't be less than 0 !",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
+        duration: Duration(seconds: 2),
+        animationDuration: Duration(milliseconds: 300),
       );
-      return 0;
+      return -_inCartItems; //for example: quantity -3 , inCartItems 3 = 0
     } else if (_inCartItems+quantity > 20) {
       Get.snackbar(
         "Item count",
         "Quantity can't be more than 20",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
+        duration: Duration(seconds: 2),
+        animationDuration: Duration(milliseconds: 300),
       );
-      return 20;
+      return 20 - _inCartItems; // for example: inCartItems 16, quantity 20-16 = 4 ==> total 20
     } else {
       return quantity;
     }
