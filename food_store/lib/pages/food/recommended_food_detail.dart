@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_store/controllers/cart_controller.dart';
 import 'package:food_store/controllers/popular_product_controller.dart';
 import 'package:food_store/controllers/recommended_product_controller.dart';
+import 'package:food_store/routes/route_helper.dart';
 import 'package:food_store/utils/app_constants.dart';
 import 'package:food_store/utils/colors.dart';
 import 'package:food_store/widgets/app_icon.dart';
@@ -43,28 +44,33 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                   child: AppIcon(icon: Icons.clear),
                 ),
       GetBuilder<PopularProductController>(builder: (controller) {
-        return Stack(
-          children: [
-            AppIcon(icon: Icons.shopping_cart_outlined),
-            controller.totalItems >= 1
-                ? Positioned(
-              right: 0,
-              top: 0,
-              child: Stack(
-                alignment:AlignmentDirectional.center,
-                children: [
-                  AppIcon(
-                    icon: Icons.circle,
-                    size: 20,
-                    iconColor: Colors.transparent,
-                    backgroundColor: AppColors.mainColor,
-                  ),
-                  BigText(text: controller.totalItems.toString(), color: Colors.white,fontSize: 12,),
-                ],
-              ),
-            )
-                : Container(),
-          ],
+        return GestureDetector(
+          onTap: (){
+            Get.toNamed(RouteHelper.getCartRoute());
+          },
+          child: Stack(
+            children: [
+              AppIcon(icon: Icons.shopping_cart_outlined),
+              controller.totalItems >= 1
+                  ? Positioned(
+                right: 0,
+                top: 0,
+                child: Stack(
+                  alignment:AlignmentDirectional.center,
+                  children: [
+                    AppIcon(
+                      icon: Icons.circle,
+                      size: 20,
+                      iconColor: Colors.transparent,
+                      backgroundColor: AppColors.mainColor,
+                    ),
+                    BigText(text: controller.totalItems.toString(), color: Colors.white,fontSize: 12,),
+                  ],
+                ),
+              )
+                  : Container(),
+            ],
+          ),
         );
       }),
               ],

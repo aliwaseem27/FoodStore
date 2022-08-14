@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/controllers/cart_controller.dart';
 import 'package:food_store/data/repository/popular_product_repo.dart';
+import 'package:food_store/models/cart_model.dart';
 import 'package:food_store/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:food_store/models/products_model.dart';
@@ -77,7 +78,6 @@ class PopularProductController extends GetxController {
     if(exist){
       _inCartItems = _cart.getQuantity(product);
     }
-    print("The quantity in the cart is ${_inCartItems}");
   }
 
   void addItem(ProductModel product) {
@@ -89,5 +89,9 @@ class PopularProductController extends GetxController {
 
   int get totalItems{
     return _cart.totalItems;
+  }
+
+  List<CartModel> get getItems{
+    return _cart.getItems;
   }
 }
