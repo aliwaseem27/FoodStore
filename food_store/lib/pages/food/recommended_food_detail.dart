@@ -14,8 +14,9 @@ import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatefulWidget {
   final int pageId;
+  final String page;
 
-  const RecommendedFoodDetail({Key? key, required this.pageId})
+  const RecommendedFoodDetail({Key? key, required this.pageId, required this.page})
       : super(key: key);
 
   @override
@@ -40,7 +41,14 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap:(){Get.back();},
+                  onTap:(){
+                    if (widget.page == "cart"){
+                      Get.toNamed(RouteHelper.getCartRoute());
+                    } else {
+                      Get.toNamed(RouteHelper.getInitialRoute());
+                    }
+
+                    },
                   child: AppIcon(icon: Icons.clear),
                 ),
       GetBuilder<PopularProductController>(builder: (controller) {
