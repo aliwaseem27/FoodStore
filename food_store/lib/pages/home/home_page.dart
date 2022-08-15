@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/pages/cart/cart_page.dart';
 import 'package:food_store/pages/home/main_food_page.dart';
 import 'package:food_store/utils/colors.dart';
 
@@ -18,11 +19,7 @@ class _HomePageState extends State<HomePage> {
         child: Text("Page 2"),
       ),
     ),
-    Container(
-      child: Center(
-        child: Text("Page 3"),
-      ),
-    ),
+    CartPage(),
     Container(
       child: Center(
         child: Text("Page 4"),

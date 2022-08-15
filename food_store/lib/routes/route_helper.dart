@@ -3,13 +3,17 @@ import 'package:food_store/pages/food/popular_food_detail.dart';
 import 'package:food_store/pages/food/recommended_food_detail.dart';
 import 'package:food_store/pages/home/home_page.dart';
 import 'package:food_store/pages/home/main_food_page.dart';
+import 'package:food_store/pages/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {
+  static const String splash = "/splash-screen";
   static const String initial = "/";
   static const String popularFood = "/popular-food";
   static const String recommendedFood = "/recommended-food";
   static const String cart = "/cart";
+
+  static String getSplashScreen() => "$splash";
 
   static String getInitialRoute() => "$initial";
 
@@ -22,6 +26,7 @@ class RouteHelper {
   static String getCartRoute() => "$cart";
 
   static List<GetPage> routes = [
+    GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: initial, page: () => HomePage()),
     GetPage(
         name: popularFood,
