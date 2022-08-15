@@ -1,6 +1,7 @@
 import 'package:food_store/pages/cart/cart_page.dart';
 import 'package:food_store/pages/food/popular_food_detail.dart';
 import 'package:food_store/pages/food/recommended_food_detail.dart';
+import 'package:food_store/pages/home/home_page.dart';
 import 'package:food_store/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ class RouteHelper {
   static String getCartRoute() => "$cart";
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => MainFoodPage()),
+    GetPage(name: initial, page: () => HomePage()),
     GetPage(
         name: popularFood,
         page: () {
@@ -36,8 +37,6 @@ class RouteHelper {
           var page = Get.parameters["page"];
           return RecommendedFoodDetail(pageId: int.parse(pageId!), page:page!);
         }),
-    GetPage(name: cart, page: (){
-      return CartPage();
-    })
+    GetPage(name: cart, page: () => CartPage()),
   ];
 }

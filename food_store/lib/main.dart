@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/controllers/cart_controller.dart';
 import 'package:food_store/controllers/popular_product_controller.dart';
 import 'package:food_store/pages/cart/cart_page.dart';
 import 'package:food_store/pages/food/popular_food_detail.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
     Get.find<RecommendedProductController>().getRecommendedProductList();
+    Get.find<CartController>();
 
 
     return GetMaterialApp(
